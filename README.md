@@ -1,0 +1,2 @@
+# curiosity--project-chimera--profit-engine-prototype
+Develop a minimal, standalone prototype of a sub-module from The Autonomy Engine—specifically, a market analysis &amp; signal generator—that can be offered as a SaaS to a single, vetted crypto fund. Goal: Generate a direct, recurring revenue stream earmarked exclusively for the Target A hardware fund. This is the first practical step in closing the eco
