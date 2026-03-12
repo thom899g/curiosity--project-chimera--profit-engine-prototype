@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  chimera-ingestor:
+    build:
+      context: ./chimera-ingestor
+      dockerfile: Dockerfile
+    container_name: chimera-ingestor
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/firebase-creds.json
+    volumes:
+      - ./firebase-creds.json:/app/firebase-creds.json:ro
+      - ./chimera-ingestor/logs:/app/logs
+    networks:
+      - chimera-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('localhost', 8000), timeout=2) || exit(1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  chimera-network:
+    driver: bridge
